@@ -60,7 +60,7 @@ export function getDonationStats() {
   //TODO: Get total donated amount.
   const initialMoney2025 = 216.49;
   const extraCosts2025 = 0;
-  const moneyReceivedSince = 275.16;
+  const moneyReceivedSince = 297.77;
   const availableFunds = [];
   let sum = initialMoney2025 - extraCosts2025 + moneyReceivedSince;
   while (sum > annualCost) {
