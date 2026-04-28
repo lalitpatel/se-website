@@ -22,14 +22,14 @@ const WireTransferTile = props => {
             <dd>TRWIBEB1XXX</dd>
             <dt>Bank Address</dt>
             <dd>
-              TransferWise Europe SA, <br />
-              Avenue Louise 54, Room S52, <br />
-              Brussels 1050, Belgium
+              Wise Europe SA, <br />
+              Rue du Trone 100, <br />
+              1050 Brussels, Belgium
             </dd>
           </dl>
         </div>
         <div className="column is-two-fifths">
-          <img src={useSiteImages('qr.png')} alt="EPC-QR-Code"/>
+          <img src={useSiteImages('qr2.png')} alt="EPC-QR-Code"/>
         </div>
       </div>
     </article>
