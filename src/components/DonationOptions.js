@@ -96,9 +96,9 @@ const DonationOptions = props => {
   ));
 
   const { annualCost, availableFunds } = getDonationStats();
-  const percent2025 = Math.round((availableFunds[0] / annualCost) * 100);
-  const percent2026 = Math.round((availableFunds[1] / annualCost) * 100);
-  const percent2027 = Math.round((availableFunds[2] / annualCost) * 100);
+  const percent2026 = Math.round((availableFunds[0] / annualCost) * 100);
+  const percent2027 = Math.round((availableFunds[1] / annualCost) * 100);
+  const percent2028 = Math.round((availableFunds[2] / annualCost) * 100);
 
   return (
     <div className="tile is-ancestor">
@@ -119,12 +119,6 @@ const DonationOptions = props => {
             <div className="columns is-mobile">
               <div className="column is-one-third has-text-centered">
                 <figure className="image is-96x96 m-auto">
-                  <CircleProgressBar percent={percent2025} />
-                </figure>
-                <p className="subtitle mt-2">2025</p>
-              </div>
-              <div className="column is-one-third has-text-centered">
-                <figure className="image is-96x96 m-auto">
                   <CircleProgressBar percent={percent2026} />
                 </figure>
                 <p className="subtitle mt-2">2026</p>
@@ -135,11 +129,17 @@ const DonationOptions = props => {
                 </figure>
                 <p className="subtitle mt-2">2027</p>
               </div>
+              <div className="column is-one-third has-text-centered">
+                <figure className="image is-96x96 m-auto">
+                  <CircleProgressBar percent={percent2028} />
+                </figure>
+                <p className="subtitle mt-2">2028</p>
+              </div>
             </div>
             <p className="has-text-grey has-text-right">
               <small>
                 <small>
-                  Last updated on <time datetime="2025-09-30">Sep 30, 2025</time>
+                  Last updated on <time datetime="2026-04-28">Apr 28, 2026</time>
                 </small>
               </small>
             </p>
