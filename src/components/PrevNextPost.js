@@ -3,9 +3,6 @@ import { Link } from 'gatsby';
 import useSiteMetadata from '../hooks/use-site-config';
 import useSiteImages from '../hooks/use-site-images';
 import TagList from './TagList';
-import { ReadingTime } from './ReadingTime';
-import Bull from './Bull';
-import estimateReadingTime from '../utils/reading-time';
 import imageSource from '../utils/image-source';
 
 const PrevNextPost = props => {
@@ -20,7 +17,7 @@ const PrevNextPost = props => {
         <div className="container">
           <div className="columns is-centered">
             {articles.map((article, i) => {
-              const { excerpt, body } = article.node;
+              const { excerpt } = article.node;
               const { tags, cover, title, slug } = article.node.frontmatter;
               const heroImg = imageSource(cover) || fallbackCoverImage?.src;
 
@@ -38,13 +35,7 @@ const PrevNextPost = props => {
                         <div className="content">
                           <p>{excerpt}</p>
                           <footer>
-                            <ReadingTime min={estimateReadingTime(body || excerpt)} />
-                            {Array.isArray(tags) && (
-                              <>
-                                <Bull />
-                                <TagList tags={tags} noLink={true} />
-                              </>
-                            )}
+                            {Array.isArray(tags) && <TagList tags={tags} noLink={true} />}
                           </footer>
                         </div>
                       </div>

@@ -1,5 +1,3 @@
-const estimateReadingTime = require('./src/utils/reading-time');
-
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
@@ -78,15 +76,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const markdownFiles = allMarkdownQuery.data.allMarkdown.edges;
 
-  const posts = markdownFiles
-    .filter(item => item.node.parent.sourceInstanceName === 'posts')
-    .map(item => ({
-      ...item,
-      node: {
-        ...item.node,
-        timeToRead: estimateReadingTime(item.node.body)
-      }
-    }));
+  const posts = markdownFiles.filter(item => item.node.parent.sourceInstanceName === 'posts');
 
   const listedPosts = posts.filter(item => item.node.frontmatter.unlisted !== true);
 
