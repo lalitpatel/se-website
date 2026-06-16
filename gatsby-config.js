@@ -53,14 +53,6 @@ module.exports = {
           remarkPlugins: [require('remark-gfm')]
         },
         gatsbyRemarkPlugins: [
-          {
-            resolve: 'gatsby-remark-images',
-            options: {
-              maxWidth: 590,
-              linkImagesToOriginal: false,
-              withWebp: true
-            }
-          },
           { resolve: 'gatsby-remark-smartypants' },
           {
             resolve: 'gatsby-remark-autolink-headers',
@@ -76,23 +68,7 @@ module.exports = {
       }
     },
     `gatsby-plugin-sass`,
-    `gatsby-plugin-image`,
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
     `gatsby-plugin-use-query-params`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: config.siteTitle,
-        short_name: config.siteTitle,
-        description: config.siteDescription,
-        start_url: config.pathPrefix,
-        background_color: config.background_color,
-        theme_color: config.themeColor,
-        display: config.display,
-        icon: config.icon
-      }
-    },
     {
       resolve: `gatsby-plugin-htaccess`,
       options: {

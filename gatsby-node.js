@@ -31,15 +31,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               language
               cover {
                 publicURL
-                childImageSharp {
-                  gatsbyImageData(width: 1200, layout: CONSTRAINED, placeholder: BLURRED)
-                }
               }
               imageShare {
                 publicURL
-                childImageSharp {
-                  gatsbyImageData(width: 1200, layout: CONSTRAINED, placeholder: BLURRED)
-                }
               }
               date
               unlisted

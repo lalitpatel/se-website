@@ -56,9 +56,6 @@ export const pageQuery = graphql`
         language
         cover {
           publicURL
-          childImageSharp {
-            gatsbyImageData(width: 1200, layout: CONSTRAINED, placeholder: BLURRED)
-          }
         }
         translations {
           language
