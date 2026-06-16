@@ -193,7 +193,7 @@ const ProjectTiles = props => {
               <p className="subtitle">The Age of Empires II Tech Tree on your web browser</p>
               <p className="has-text-centered">
                 <a href="https://aoe2techtree.net/" target="_blank" rel="noreferrer">
-                  <SiteImage src="projects/aoe2techtree.png" alt="Age of Empires II Tech Tree" />
+                  <SiteImage src="projects/aoe2techtree.png" alt="Age of Empires II Tech Tree" width={128} height={128} />
                 </a>
               </p>
               <p>

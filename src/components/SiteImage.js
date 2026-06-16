@@ -1,5 +1,4 @@
 import React from 'react';
-import { GatsbyImage } from 'gatsby-plugin-image';
 import useSiteImages from '../hooks/use-site-images';
 
 const SiteImage = ({ src, alt, imgClassName, width, height, style, ...props }) => {
@@ -15,10 +14,6 @@ const SiteImage = ({ src, alt, imgClassName, width, height, style, ...props }) =
     return null;
   }
 
-  if (localImage?.image) {
-    return <GatsbyImage image={localImage.image} alt={alt} imgClassName={imgClassName} style={imageStyle} {...props} />;
-  }
-
   return (
     <img
       src={isLocalImage ? localImage.src : src}
@@ -26,7 +21,7 @@ const SiteImage = ({ src, alt, imgClassName, width, height, style, ...props }) =
       className={imgClassName}
       width={width}
       height={height}
-      style={style}
+      style={imageStyle}
       {...props}
     />
   );
