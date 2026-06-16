@@ -5,28 +5,23 @@ import Template from '../components/Template';
 import Content from '../components/Content';
 import Hero from '../components/Hero';
 import SEO from '../components/SEO';
+import imageSource from '../utils/image-source';
 
 const PageTemplate = props => {
   const page = props.data.page;
+  const cover = imageSource(page.frontmatter.cover);
   return (
     <Template location={props.location}>
-      <SEO
-        title={page.frontmatter.title}
-        description={page.excerpt}
-        path={page.frontmatter.slug}
-        cover={page.frontmatter.cover && page.frontmatter.cover.publicURL}
-        lang={page.frontmatter.language || 'en'}
-        translations={page.frontmatter.translations}
-      />
-
       <Hero
-        heroImg={page.frontmatter.cover && page.frontmatter.cover.publicURL}
+        heroImg={cover}
         title={page.frontmatter.title}
         subtitle={page.frontmatter.description}
       />
 
       <section className="section">
-        <Content content={page.body} date={page.frontmatter.date} translations={page.frontmatter.translations} />
+        <Content date={page.frontmatter.date} translations={page.frontmatter.translations}>
+          {props.children}
+        </Content>
       </section>
     </Template>
   );
@@ -34,10 +29,24 @@ const PageTemplate = props => {
 
 export default PageTemplate;
 
+export const Head = props => {
+  const page = props.data.page;
+  const cover = imageSource(page.frontmatter.cover);
+  return (
+    <SEO
+      title={page.frontmatter.title}
+      description={page.excerpt}
+      path={page.frontmatter.slug}
+      cover={cover}
+      lang={page.frontmatter.language || 'en'}
+      translations={page.frontmatter.translations}
+    />
+  );
+};
+
 export const pageQuery = graphql`
   query ($slug: String!) {
     page: mdx(frontmatter: { slug: { eq: $slug } }) {
-      body
       excerpt
       frontmatter {
         title
@@ -47,6 +56,9 @@ export const pageQuery = graphql`
         language
         cover {
           publicURL
+          childImageSharp {
+            gatsbyImageData(width: 1200, layout: CONSTRAINED, placeholder: BLURRED)
+          }
         }
         translations {
           language

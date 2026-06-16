@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 
 export default React.memo(
   ({ author, canonicalUrl, datePublished, defaultTitle, description, image, isBlogPost, organization, title, url }) => {
@@ -45,7 +44,7 @@ export default React.memo(
             description,
             author: {
               '@type': 'Person',
-              name: author.name
+              name: author
             },
             publisher: {
               '@type': 'Organization',
@@ -62,11 +61,6 @@ export default React.memo(
         ]
       : baseSchema;
 
-    return (
-      <Helmet>
-        {/* Schema.org tags */}
-        <script type="application/ld+json">{JSON.stringify(schema)}</script>
-      </Helmet>
-    );
+    return <script type="application/ld+json">{JSON.stringify(schema)}</script>;
   }
 );

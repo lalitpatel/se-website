@@ -1,15 +1,9 @@
 import React from 'react';
-import useSiteImages from '../hooks/use-site-images';
-import Link from 'gatsby-link';
+import { Link } from 'gatsby';
 import { IoCashOutline, IoLogoGithub } from 'react-icons/io5';
+import SiteImage from './SiteImage';
 
 const ProjectCard = props => {
-  let projectImageSrc = null;
-  if (props.image_url) {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    projectImageSrc = props.image_url.startsWith('http') ? props.image_url : useSiteImages(props.image_url);
-  }
-
   return (
     <div className="card se-project">
       <div className="card-content">
@@ -17,7 +11,7 @@ const ProjectCard = props => {
           <h3 className="title">{props.name}</h3>
           <p className="subtitle">{props.description}</p>
           <figure className="image is-128x128 is-pulled-right m-0">
-            <img className="is-rounded" src={projectImageSrc} width={128} alt={props.name} />
+            <SiteImage src={props.image_url} imgClassName="is-rounded" width={128} height={128} alt={props.name} />
           </figure>
           <dl className="description">
             <dt>Domains</dt>

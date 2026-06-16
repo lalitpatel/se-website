@@ -5,7 +5,7 @@ import useSiteImages from '../hooks/use-site-images';
 const Hero = props => {
   const { siteCoverImage } = useSiteMetadata();
   const fallbackCoverImage = useSiteImages(siteCoverImage);
-  const heroImg = props.heroImg || fallbackCoverImage;
+  const heroImg = props.heroImg || fallbackCoverImage?.src;
 
   return (
     <section className="hero has-background-grey-dark" style={{ backgroundImage: `url("${heroImg}")` }}>

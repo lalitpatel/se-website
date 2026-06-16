@@ -1,5 +1,5 @@
 import React from 'react';
-import useSiteImages from "../hooks/use-site-images";
+import SiteImage from './SiteImage';
 
 const WireTransferTile = props => {
   return (
@@ -29,7 +29,7 @@ const WireTransferTile = props => {
           </dl>
         </div>
         <div className="column is-two-fifths">
-          <img src={useSiteImages('qr2.png')} alt="EPC-QR-Code"/>
+          <SiteImage src="qr2.png" alt="EPC-QR-Code" />
         </div>
       </div>
     </article>

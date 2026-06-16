@@ -1,14 +1,12 @@
 import React from 'react';
-import useSiteImages from '../hooks/use-site-images';
+import SiteImage from './SiteImage';
 
 const MemberCard = props => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const avatarUrl = props.avatarUrl && !props.avatarUrl.startsWith('http') ? useSiteImages(props.avatarUrl) : null;
   return (
     <article className="media">
       <figure className="media-left mb-0 mx-4 image is-64x64">
         <a href={`https://discordapp.com/users/${props.discordId}`} target="_blank" rel="noreferrer">
-          <img src={avatarUrl} className="is-rounded" alt={props.name} />
+          <SiteImage src={props.avatarUrl} imgClassName="is-rounded" alt={props.name} width={64} height={64} />
         </a>
       </figure>
       <div className="media-content">

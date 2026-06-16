@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 
 import PostsListItem from './PostsListItem';
 import useSiteMetadata from '../hooks/use-site-config';
+import estimateReadingTime from '../utils/reading-time';
 
 const PostsList = ({ posts }) => {
   const { defaultLang } = useSiteMetadata();
@@ -13,7 +14,7 @@ const PostsList = ({ posts }) => {
           title: post.node.frontmatter.title,
           excerpt: post.node.excerpt,
           slug: post.node.frontmatter.slug,
-          timeToRead: post.node.timeToRead,
+          timeToRead: estimateReadingTime(post.node.body || post.node.excerpt),
           language: post.node.frontmatter.language || defaultLang,
           tags: post.node.frontmatter.tags || []
         };

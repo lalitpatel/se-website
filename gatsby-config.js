@@ -9,6 +9,7 @@ module.exports = {
     ...config
   },
   pathPrefix: config.pathPrefix,
+  trailingSlash: 'never',
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
@@ -48,8 +49,8 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
-        defaultLayouts: {
-          default: require.resolve('./src/templates/page-template.js')
+        mdxOptions: {
+          remarkPlugins: [require('remark-gfm')]
         },
         gatsbyRemarkPlugins: [
           {
@@ -60,9 +61,6 @@ module.exports = {
               withWebp: true
             }
           },
-          { resolve: 'gatsby-remark-prismjs' },
-          { resolve: 'gatsby-remark-responsive-iframe' },
-          { resolve: 'gatsby-remark-copy-linked-files' },
           { resolve: 'gatsby-remark-smartypants' },
           {
             resolve: 'gatsby-remark-autolink-headers',
@@ -77,17 +75,10 @@ module.exports = {
         ]
       }
     },
-    // Reminder (https://github.com/gatsbyjs/gatsby/issues/15486#issuecomment-509405867)
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [`gatsby-remark-images`]
-      }
-    },
     `gatsby-plugin-sass`,
     `gatsby-plugin-image`,
-    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     `gatsby-plugin-use-query-params`,
     {
       resolve: `gatsby-plugin-manifest`,

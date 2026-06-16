@@ -1,10 +1,11 @@
 import React from 'react';
 import { CircleProgressBar, getDonationStats } from './DonationProgressBar';
 import WireTransferTile from './WireTransferTile';
-import Link from 'gatsby-link';
+import { Link } from 'gatsby';
 import { StripePaymentLink } from './StripePaymentLink';
 
 const DonationOptions = props => {
+  const useTestProducts = process.env.GATSBY_STRIPE_ENV === 'test';
   const liveProducts = [
     {
       priceId: 'price_1JOLLNF5HGMIMfioh3leVjGl',
@@ -79,10 +80,7 @@ const DonationOptions = props => {
       paymentLink: 'https://buy.stripe.com/test_6oEdUL50f38rahqbIK'
     }
   ];
-
-  // const { NODE_ENV } = process.env;
-  // const paymentButtons = (NODE_ENV === 'production' ? liveProducts : liveProducts).map(product => (
-  const paymentButtons = liveProducts.map(product => (
+  const paymentButtons = (useTestProducts ? testProducts : liveProducts).map(product => (
     <StripePaymentLink
       label={`Donate € ${product.amount}`}
       priceId={product.priceId}
@@ -114,7 +112,7 @@ const DonationOptions = props => {
             <p>
               If the cost estimations on our <Link to={'/projects'}>projects page</Link> are accurate and no projects
               are added or removed, we would need about <strong>€&nbsp;{(annualCost - availableFunds[1]).toFixed(2)}</strong> more to
-              cover our costs for 2026.
+              cover our costs for 2027.
             </p>
             <div className="columns is-mobile">
               <div className="column is-one-third has-text-centered">
