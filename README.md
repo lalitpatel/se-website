@@ -2,40 +2,44 @@
 
 The main Siege Engineers website.
 
-Requires Node 14+
+Requires Node `v24.12.0` through `nvm`.
 
 ## Commands
-```sh
-# Install Gatsby CLI
-npm install -g gatsby-cli
 
-# install dependencies
+```sh
+# Use the project Node version
+nvm use
+
+# Install dependencies
 npm install
 
 # Development
-gatsby develop
+npm run develop
+
+# Development with Stripe test payment links
+GATSBY_STRIPE_ENV=test npm run develop
 
 # Production Build
-gatsby build
-
-# Serve the build locally
-gatsby serve
-```
-
-## Other Commands
-```sh
-# working locally
-npm run dev
-
-# generate build
 npm run build
 
-# format code
+# Serve the build locally
+npx gatsby serve
+```
+
+`npm install` can print a non-fatal peer warning from Gatsby's internal experimental `react-server-dom-webpack` package. The install is expected to exit 0.
+
+## Other Commands
+
+```sh
+# Start the local development server
+npm start
+
+# Format code
 npm run format
 
-# lint code
+# Lint code
 npm run lint
 
-# deploy
+# Deploy
 rsync -avh ./public/ aoe2se:~/html/ --delete
 ```

@@ -14,13 +14,22 @@ const useSiteImages = imageName => {
       }
     }
   `);
+
+  if (!imageName) {
+    return null;
+  }
+
   const items = result.allFile.edges;
   const image = items.find(edge => edge.node.relativePath === imageName);
+
   if (image === undefined) {
     throw new Error(`Unable to find image: ${imageName} (in content/images)`);
   }
 
-  return image.node.publicURL;
+  return {
+    ...image.node,
+    src: image.node.publicURL
+  };
 };
 
 export default useSiteImages;

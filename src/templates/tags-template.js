@@ -1,5 +1,4 @@
 import React from 'react';
-import { graphql } from 'gatsby';
 
 import Template from '../components/Template';
 import PostsList from '../components/PostsList';
@@ -9,11 +8,10 @@ import Hero from '../components/Hero';
 class TagsTemplate extends React.Component {
   render() {
     const pageTitle = `#${this.props.pageContext.tag}`;
-    const posts = this.props.data.posts.edges;
+    const posts = this.props.pageContext.posts.map(post => ({ node: post }));
 
     return (
       <Template location={this.props.location}>
-        <SEO title={`Top blog posts on ${this.props.pageContext.tag}`} />
         <Hero title={pageTitle} subtitle={`Posts tagged as ${this.props.pageContext.tag}`} />
 
         <section className="section">
@@ -28,24 +26,6 @@ class TagsTemplate extends React.Component {
 
 export default TagsTemplate;
 
-export const pageQuery = graphql`
-  query PostsByTag($tag: String!) {
-    posts: allMdx(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { tags: { eq: $tag }, published: { ne: false }, unlisted: { ne: true } } }
-    ) {
-      edges {
-        node {
-          excerpt
-          timeToRead
-          frontmatter {
-            title
-            tags
-            language
-            slug
-          }
-        }
-      }
-    }
-  }
-`;
+export const Head = props => {
+  return <SEO title={`Top blog posts on ${props.pageContext.tag}`} path={`/tags/${props.pageContext.tag}`} />;
+};

@@ -3,14 +3,13 @@ import { Link } from 'gatsby';
 import useSiteMetadata from '../hooks/use-site-config';
 import useSiteImages from '../hooks/use-site-images';
 import TagList from './TagList';
-import { ReadingTime } from './ReadingTime';
-import Bull from './Bull';
+import imageSource from '../utils/image-source';
 
 const PrevNextPost = props => {
   const { previous, next } = props;
   const articles = [previous, next].filter(i => i).map(item => ({ node: item }));
   const { siteCoverImage, blogPostPathPrefix } = useSiteMetadata();
-  const { fixed } = useSiteImages(siteCoverImage);
+  const fallbackCoverImage = useSiteImages(siteCoverImage);
 
   return (
     <Fragment>
@@ -18,9 +17,9 @@ const PrevNextPost = props => {
         <div className="container">
           <div className="columns is-centered">
             {articles.map((article, i) => {
-              const { excerpt, timeToRead } = article.node;
+              const { excerpt } = article.node;
               const { tags, cover, title, slug } = article.node.frontmatter;
-              const heroImg = (cover && cover.publicURL) || fixed.src;
+              const heroImg = imageSource(cover) || fallbackCoverImage?.src;
 
               return (
                 <div className="column is-one-third-desktop is-half-tablet" key={slug}>
@@ -36,13 +35,7 @@ const PrevNextPost = props => {
                         <div className="content">
                           <p>{excerpt}</p>
                           <footer>
-                            <ReadingTime min={timeToRead} />
-                            {Array.isArray(tags) && (
-                              <>
-                                <Bull />
-                                <TagList tags={tags} noLink={true} />
-                              </>
-                            )}
+                            {Array.isArray(tags) && <TagList tags={tags} noLink={true} />}
                           </footer>
                         </div>
                       </div>

@@ -3,6 +3,7 @@ import WireTransferTile from './WireTransferTile';
 import { StripePaymentLink } from './StripePaymentLink';
 
 const MembershipOptions = props => {
+  const useTestProducts = process.env.GATSBY_STRIPE_ENV === 'test';
   const liveProducts = {
     subscription: {
       priceId: 'price_1JOMQhF5HGMIMfio0EeS3pUz',
@@ -31,10 +32,7 @@ const MembershipOptions = props => {
       paymentLink: 'https://buy.stripe.com/test_6oE03VdwLdN52OYeUU'
     }
   };
-
-  // const { NODE_ENV } = process.env;
-  // const products = NODE_ENV === 'production' ? liveProducts : liveProducts;
-  const products = liveProducts;
+  const products = useTestProducts ? testProducts : liveProducts;
 
   return (
     <div className="tile is-ancestor">

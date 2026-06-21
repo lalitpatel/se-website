@@ -11,7 +11,7 @@ const NotFoundPage = props => {
   const data = useStaticQuery(graphql`
     query {
       posts: allMdx(
-        sort: { fields: [frontmatter___date], order: DESC }
+        sort: { frontmatter: { date: DESC } }
         filter: {
           fileAbsolutePath: { regex: "//content/posts//" }
           frontmatter: { published: { ne: false }, unlisted: { ne: true } }
@@ -39,7 +39,6 @@ const NotFoundPage = props => {
 
   return (
     <Template location={props.location} noCover={true}>
-      <SEO title="Page Not Found" />
       <Hero title={<Taunt />} />
       <section className="section">
         <div className="content container is-max-desktop">
@@ -52,3 +51,5 @@ const NotFoundPage = props => {
 };
 
 export default NotFoundPage;
+
+export const Head = () => <SEO title="Page Not Found" path="/404" />;

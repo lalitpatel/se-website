@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import 'prismjs/themes/prism-tomorrow.css';
 import '../styles/style.sass';
 
 class Template extends React.Component {

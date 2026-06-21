@@ -1,7 +1,7 @@
 import React from 'react';
-import useSiteImages from '../hooks/use-site-images';
-import Link from 'gatsby-link';
+import { Link } from 'gatsby';
 import { IoLogoDiscord, IoLogoGithub } from 'react-icons/io5';
+import SiteImage from './SiteImage';
 
 const ProjectTiles = props => {
   return (
@@ -14,7 +14,7 @@ const ProjectTiles = props => {
                 <article className="tile is-child notification is-dark has-text-centered">
                   <p>
                     <a href="https://github.com/SiegeEngineers" target="_blank" rel="noreferrer">
-                      <img src={useSiteImages('github-logo.svg')} alt="GitHub" />
+                      <SiteImage src="github-logo.svg" alt="GitHub" />
                     </a>
                   </p>
                   <p className="subtitle">
@@ -36,7 +36,7 @@ const ProjectTiles = props => {
                 </article>
                 <article className="tile is-child notification is-info has-text-centered">
                   <a href="https://discordapp.com/invite/njAsNuD" target="_blank" rel="noreferrer">
-                    <img src={useSiteImages('discord-logo.svg')} alt="Discord" />
+                    <SiteImage src="discord-logo.svg" alt="Discord" />
                   </a>
                   <p className="subtitle">Join the fun, chat with fellow technical Age of Empires II enthusiasts!</p>
                   <p>
@@ -82,7 +82,7 @@ const ProjectTiles = props => {
                   <p className="subtitle">Captains Mode for Age of Empires II</p>
                   <p>
                     <a href="https://aoe2cm.net/" target="_blank" rel="noreferrer">
-                      <img src={useSiteImages('projects/aoe2cm2.png')} alt="Captains Mode" width={200}/>
+                      <SiteImage src="projects/aoe2cm2.png" alt="Captains Mode" width={200} />
                     </a>
                   </p>
                   <p>
@@ -141,7 +141,7 @@ const ProjectTiles = props => {
               <article className="tile is-child notification has-text-dark is-success">
                 <h3 className="title">
                   <a href="https://aoe2map.net/" target="_blank" rel="noreferrer">
-                    <img src={useSiteImages('projects/aoe2map-banner.svg')} alt="Age of Empires II Map"/>
+                    <SiteImage src="projects/aoe2map-banner.svg" alt="Age of Empires II Map" />
                   </a>
                 </h3>
                 <p className="subtitle">Find tournament maps or showcase your own creations!</p>
@@ -170,7 +170,7 @@ const ProjectTiles = props => {
                 <p className="subtitle">See where you stack up in the pool of DE players.</p>
                 <p>
                   <a href="https://ratings.aoe2.se/" target="_blank" rel="noreferrer">
-                    <img src={useSiteImages('projects/aoe2-ratings.png')} alt="AoE2 Ratings" />
+                    <SiteImage src="projects/aoe2-ratings.png" alt="AoE2 Ratings" />
                   </a>
                 </p>
                 <p>Shareable URLs. Updated daily.</p>
@@ -193,7 +193,7 @@ const ProjectTiles = props => {
               <p className="subtitle">The Age of Empires II Tech Tree on your web browser</p>
               <p className="has-text-centered">
                 <a href="https://aoe2techtree.net/" target="_blank" rel="noreferrer">
-                  <img src={useSiteImages('projects/aoe2techtree.png')} alt="Age of Empires II Tech Tree" />
+                  <SiteImage src="projects/aoe2techtree.png" alt="Age of Empires II Tech Tree" width={128} height={128} />
                 </a>
               </p>
               <p>
