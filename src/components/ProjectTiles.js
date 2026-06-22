@@ -302,7 +302,7 @@ const ProjectTiles = props => {
           </div>
         </div>
         <div className="tile is-parent">
-          <article className="tile is-child notification has-background-info-light se-dark-neutral-tile se-support-tile">
+          <article className="tile is-child notification se-dark-neutral-tile se-support-tile">
             {/*<div className="is-pulled-right has-text-centered" style={{ width: 150 }}>*/}
             {/*  <figure className="image is-128x128 m-auto">*/}
             {/*    <DonationProgressBar />*/}

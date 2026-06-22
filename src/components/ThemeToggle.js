@@ -16,6 +16,10 @@ const THEME_ICONS = {
 };
 
 const applyTheme = theme => {
+  if (typeof document === 'undefined') {
+    return;
+  }
+
   if (theme === 'system') {
     document.documentElement.removeAttribute('data-theme');
     return;
@@ -24,18 +28,38 @@ const applyTheme = theme => {
   document.documentElement.setAttribute('data-theme', theme);
 };
 
+const getStoredTheme = () => {
+  if (typeof window === 'undefined') {
+    return DEFAULT_THEME;
+  }
+
+  try {
+    const storedTheme = window.localStorage.getItem(STORAGE_KEY);
+    return THEME_ORDER.includes(storedTheme) ? storedTheme : DEFAULT_THEME;
+  } catch {
+    return DEFAULT_THEME;
+  }
+};
+
+const persistTheme = theme => {
+  try {
+    window.localStorage.setItem(STORAGE_KEY, theme);
+  } catch {
+    // Theme switching should still work for the current page if storage is blocked.
+  }
+};
+
 const ThemeToggle = () => {
   const [theme, setTheme] = useState(DEFAULT_THEME);
 
   const setStoredTheme = nextTheme => {
     setTheme(nextTheme);
-    window.localStorage.setItem(STORAGE_KEY, nextTheme);
+    persistTheme(nextTheme);
     applyTheme(nextTheme);
   };
 
   useEffect(() => {
-    const storedTheme = window.localStorage.getItem(STORAGE_KEY);
-    const nextTheme = THEME_ORDER.includes(storedTheme) ? storedTheme : DEFAULT_THEME;
+    const nextTheme = getStoredTheme();
     setTheme(nextTheme);
     applyTheme(nextTheme);
   }, []);

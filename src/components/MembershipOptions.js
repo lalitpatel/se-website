@@ -38,7 +38,7 @@ const MembershipOptions = props => {
     <div className="tile is-ancestor">
       <div className="tile">
         <div className="tile is-parent is-vertical">
-          <article className="tile is-child notification has-background-info-light se-dark-neutral-tile se-payment-tile">
+          <article className="tile is-child notification se-dark-neutral-tile se-payment-tile">
             <h4 className="title">One time Payment</h4>
             <p className="subtitle ">
               <small>Pay your Membership Fee for 1 year</small>
@@ -53,7 +53,7 @@ const MembershipOptions = props => {
               />
             </p>
           </article>
-          <article className="tile is-child notification has-background-info-light se-dark-neutral-tile se-payment-tile">
+          <article className="tile is-child notification se-dark-neutral-tile se-payment-tile">
             <h4 className="title">Annual Subscription</h4>
             <p className="subtitle">
               <small>Your card will be charged € 5 annually</small>
