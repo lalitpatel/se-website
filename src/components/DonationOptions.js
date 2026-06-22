@@ -102,7 +102,7 @@ const DonationOptions = props => {
     <div className="tile is-ancestor">
       <div className="tile">
         <div className="tile is-parent is-vertical">
-          <article className="tile is-child notification has-background-info-light">
+          <article className="tile is-child notification has-background-info-light se-dark-neutral-tile se-payment-tile">
             <h4>Donate Now</h4>
             <p className="buttons ">{paymentButtons}</p>
             <p>These buttons will lead you to stripe.com where you can donate to us by paying with your credit card.</p>

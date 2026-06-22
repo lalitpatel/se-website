@@ -1,26 +1,50 @@
 @charset "utf-8"
-@import "../../node_modules/bulma/sass/utilities/initial-variables"
-
-//@import "style-dark"
 
 $yellow: #ffdc4e
 $family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace
-$family-code: $family-monospace
 
-@import "../../node_modules/bulma/bulma.sass"
+@use "../../node_modules/bulma/sass" with (
+  $family-code: $family-monospace,
+  $link: #485fc7,
+  $text: #4a4a4a,
+  $warning: $yellow
+)
 
 *::selection
   background-color: $yellow
 
+:root
+  --se-progress-trail: #d9e8f5
+
+[data-theme="dark"]
+  --se-progress-trail: #1f3a52
+
+@media (prefers-color-scheme: dark)
+  :root:not([data-theme="light"])
+    --se-progress-trail: #1f3a52
+
+@media (prefers-reduced-motion: no-preference)
+  html,
+  body,
+  .navbar,
+  .notification,
+  .button,
+  .card,
+  .footer
+    transition: background-color 0.30s ease, border-color 0.30s ease, color 0.30s ease, box-shadow 0.30s ease
+
 kbd 
-  font-family: $family-code
+  font-family: $family-monospace
 
 h1, h2, h3, h4, h5, h6
     font-family: "Bitter", sans-serif
 
 .content
   h1, h2, h3, h4, h5, h6
-    color: $scheme-invert-ter
+    color: var(--bulma-text-strong)
+
+  table
+    width: 100%
 
 .token.tag,
 .token.content,
@@ -44,20 +68,27 @@ h1
   color: $yellow !important
 
 .hero .subtitle
-  color: $grey-light !important
+  color: var(--bulma-grey-light) !important
 
 .hero-body
   text-align: center
+  .title:not(.is-spaced):has(+ .subtitle)
+    margin-bottom: 5px
 
 .author-image
   padding: 2px
-  box-shadow: $warning-dark 0 0 0 1px
+  box-shadow: var(--bulma-warning) 0 0 0 1px
   border-radius: 100%
-  background-color: $scheme-main
+  background-color: var(--bulma-scheme-main)
+
+.se-member-name
+  color: var(--bulma-text-strong)
+  font-weight: var(--bulma-weight-semibold)
+  line-height: var(--bulma-title-line-height)
 
 .card-image
   h3
-    color: $warning
+    color: var(--bulma-warning)
     position: absolute
     bottom: 0
     padding: 10px
@@ -67,10 +98,14 @@ h1
     background-color: #00000030
 
 .se-project
-  background-color: $scheme-main-ter
+  background-color: var(--bulma-scheme-main-ter)
   box-shadow: none
   table.table
     background-color: transparent
+
+.tile
+  .title:not(.is-spaced):has(+ .subtitle)
+    margin-bottom: 5px
     
 dl.description
   dt
@@ -83,14 +118,275 @@ dl.description
       margin-bottom: 1em
 
 .navbar.is-dark
+  --bulma-navbar-background-color: #363636
+  background-color: #363636
+
   .navbar-end, .navbar-start
+    .navbar-item.is-active
+      background-color: #292929
+
     .navbar-link.is-active, .navbar-item.is-active, .navbar-link:hover
-      +desktop
-        color: $warning !important
-      +tablet-only
-        color: $warning-dark !important
-      +mobile
-        color: $warning-dark !important
+      color: var(--bulma-warning) !important
+
+.se-theme-toggle
+  background-color: rgba(255, 255, 255, 0.06)
+  border-color: rgba(255, 255, 255, 0.45)
+  color: #ffffff
+  min-width: 2.5rem
+
+  &:hover,
+  &:focus
+    background-color: rgba(255, 255, 255, 0.14)
+    border-color: rgba(255, 255, 255, 0.8)
+    color: #ffffff
+
+.footer-note
+  color: var(--bulma-text-weak)
+
+.se-project-tiles
+  .notification
+    .title,
+    .subtitle,
+    .content,
+    .content h1,
+    .content h2,
+    .content h3,
+    .content h4,
+    .content h5,
+    .content h6
+      color: currentColor
+
+    &.is-dark
+      background-color: #363636
+      color: #ffffff
+
+    &.is-info
+      background-color: #3298dc
+      color: #ffffff
+
+    &.is-link
+      background-color: #485fc7
+      color: #ffffff
+
+    &.is-danger
+      background-color: #f14668
+      color: #ffffff
+
+    &.is-warning
+      background-color: $yellow
+      color: rgba(0, 0, 0, 0.7)
+
+    &.is-success
+      background-color: #48c78e
+      color: rgba(0, 0, 0, 0.7)
+
+    &.is-primary
+      background-color: #00d1b2
+      color: rgba(0, 0, 0, 0.7)
+
+  .se-theme-button.is-outlined
+    border-color: var(--bulma-text-strong)
+    color: var(--bulma-text-strong)
+
+    &:hover,
+    &:focus
+      background-color: var(--bulma-text-strong)
+      border-color: var(--bulma-text-strong)
+      color: var(--bulma-scheme-main)
+
+.se-payment-tile
+  background-color: #eff5fb !important
+
+  .button.is-info
+    background-color: #3e8ed0
+    border-color: transparent
+    color: #ffffff
+
+    &:hover,
+    &.is-hovered
+      background-color: #3488ce
+      border-color: transparent
+      color: #ffffff
+
+    &:focus,
+    &.is-focused
+      border-color: transparent
+      color: #ffffff
+
+    &:active,
+    &.is-active
+      background-color: #3082c5
+      border-color: transparent
+      color: #ffffff
+
+=se-project-tile-dark-mode
+  .se-dark-neutral-tile
+    background-color: var(--bulma-scheme-main-ter) !important
+    color: var(--bulma-text)
+
+  .se-payment-tile
+    background-color: #0b2545 !important
+    color: #ffffff
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6
+      color: currentColor
+
+    .button.is-info
+      background-color: #0f5a9c
+      border-color: #0f5a9c
+      color: #ffffff
+
+      &:hover,
+      &:focus
+        background-color: #0d4c83
+        border-color: #0d4c83
+
+  .se-support-tile
+    .button.is-info
+      background-color: #0f5a9c
+      border-color: #0f5a9c
+      color: #ffffff
+
+      &:hover,
+      &:focus
+        background-color: #0d4c83
+        border-color: #0d4c83
+
+  .se-project-tiles
+    .notification
+      p,
+      li
+        color: color-mix(in srgb, currentColor 82%, transparent)
+
+      .title,
+      .subtitle,
+      .button
+        color: currentColor
+
+    .notification.is-info
+      background-color: #155f8a
+      color: #eaf7ff
+
+    .notification.is-danger
+      background-color: #8a2438
+      color: #fff0f3
+
+    .notification.is-success
+      background-color: #1f6f4a
+      color: #ffffff
+
+      &.has-text-dark
+        color: #ffffff !important
+
+      .button.is-dark.is-outlined
+        border-color: rgba(255, 255, 255, 0.85)
+        color: #ffffff
+
+        &:hover,
+        &:focus
+          background-color: #ffffff
+          border-color: #ffffff
+          color: #1f6f4a
+
+    .notification.is-primary
+      background-color: #087565
+      color: #ffffff
+
+      .has-text-dark
+        color: #ffffff !important
+
+      .button.is-dark.is-outlined
+        border-color: rgba(255, 255, 255, 0.85)
+        color: #ffffff
+
+        &:hover,
+        &:focus
+          background-color: #ffffff
+          border-color: #ffffff
+          color: #087565
+
+    .notification.is-warning
+      background-color: #8a6a08
+      color: #fff7d6
+
+      .button.is-dark.is-outlined
+        border-color: rgba(255, 247, 214, 0.85)
+        color: #fff7d6
+
+        &:hover,
+        &:focus
+          background-color: #fff7d6
+          border-color: #fff7d6
+          color: #654d00
+
+    .se-dark-current-text
+      color: currentColor !important
+
+    .se-support-tile
+      .button.is-info
+        background-color: #0f5a9c
+        border-color: #0f5a9c
+        color: #ffffff
+
+        strong
+          color: currentColor
+
+        &:hover,
+        &:focus
+          background-color: #0d4c83
+          border-color: #0d4c83
+          color: #ffffff
+
+[data-theme="dark"]
+  +se-project-tile-dark-mode
+
+@media (prefers-color-scheme: dark)
+  :root:not([data-theme="light"])
+    +se-project-tile-dark-mode
+
+.tile
+  align-items: stretch
+  display: block
+  flex-basis: 0
+  flex-grow: 1
+  flex-shrink: 1
+  min-height: min-content
+
+  &.is-ancestor
+    margin-left: -0.75rem
+    margin-right: -0.75rem
+    margin-top: -0.75rem
+
+    &:last-child
+      margin-bottom: -0.75rem
+
+    &:not(:last-child)
+      margin-bottom: 0.75rem
+
+  &.is-child
+    margin: 0 !important
+
+  &.is-parent
+    padding: 0.75rem
+
+  &.is-vertical
+    flex-direction: column
+
+    > .tile.is-child:not(:last-child)
+      margin-bottom: 1.5rem !important
+
+  @media screen and (min-width: 769px), print
+    &:not(.is-child)
+      display: flex
+
+    &.is-8
+      flex: none
+      width: 66.66666674%
 
 .tile.notification
   padding: 1.25rem

@@ -2,6 +2,7 @@ import React from 'react';
 import useSiteMetadata from '../hooks/use-site-config';
 import { Link } from 'gatsby';
 import SiteImage from './SiteImage';
+import ThemeToggle from './ThemeToggle';
 
 const Header = props => {
   const { siteTitle } = useSiteMetadata();
@@ -73,6 +74,9 @@ const Header = props => {
                   <strong>Donate</strong>
                 </Link>
               </div>
+            </div>
+            <div className="navbar-item">
+              <ThemeToggle />
             </div>
           </div>
         </div>

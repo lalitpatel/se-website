@@ -60,10 +60,22 @@ const ProjectCard = props => {
         </div>
       </div>
       <footer className="card-footer">
-        <a href={props.project_url} className="card-footer-item" target="_blank" rel="noreferrer">
+        <a
+          href={props.project_url}
+          className="card-footer-item"
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`Go to ${props.name}`}
+        >
           Go to Project
         </a>
-        <a href={props.github_url} className="card-footer-item" target="_blank" rel="noreferrer">
+        <a
+          href={props.github_url}
+          className="card-footer-item"
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`Open ${props.name} GitHub repository`}
+        >
           <span className="icon-text">
             <span className="icon">
               <IoLogoGithub size="20" />

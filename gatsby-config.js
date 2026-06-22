@@ -67,7 +67,16 @@ module.exports = {
         ]
       }
     },
-    `gatsby-plugin-sass`,
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        sassOptions: {
+          indentedSyntax: true,
+          quietDeps: true,
+          silenceDeprecations: ['legacy-js-api', 'if-function']
+        }
+      }
+    },
     `gatsby-plugin-use-query-params`,
     {
       resolve: `gatsby-plugin-htaccess`,

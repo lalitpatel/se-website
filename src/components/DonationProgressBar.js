@@ -18,6 +18,7 @@ export const CircleProgressBar = props => {
           styles={buildStyles({
             pathTransitionDuration: 2,
             pathColor: '#3e8ed0',
+            trailColor: 'var(--se-progress-trail)',
             textColor: '#3e8ed0'
           })}
         />

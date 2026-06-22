@@ -5,7 +5,7 @@ import SiteImage from './SiteImage';
 
 const ProjectTiles = props => {
   return (
-    <div className="tile is-ancestor">
+    <div className="tile is-ancestor se-project-tiles">
       <div className="tile is-vertical">
         <div className="tile">
           <div className="tile is-vertical is-8">
@@ -90,7 +90,7 @@ const ProjectTiles = props => {
                         href="https://aoe2cm.net/"
                         target="_blank"
                         rel="noreferrer"
-                        className="button is-dark is-outlined"
+                        className="button se-theme-button is-outlined"
                     >
                       aoe2cm.net
                     </a>
@@ -105,7 +105,7 @@ const ProjectTiles = props => {
                           href="https://aoe2recs.com/"
                           target="_blank"
                           rel="noreferrer"
-                          className="button is-outlined"
+                          className="button is-light is-outlined"
                       >
                         aoe2recs.com
                       </a>
@@ -249,7 +249,7 @@ const ProjectTiles = props => {
               </div>
             </article>
             <article className="tile is-child notification">
-              <div className="content has-text-dark">
+              <div className="content has-text-dark se-dark-current-text">
                 <h3 className="title">Image to RMS</h3>
                 <p className="subtitle">Turn images into random map scripts</p>
                 <p>
@@ -262,7 +262,7 @@ const ProjectTiles = props => {
                       href="https://image-to-rms.aoe2.se/"
                       target="_blank"
                       rel="noreferrer"
-                      className="button is-dark is-outlined"
+                      className="button se-theme-button is-outlined"
                   >
                     image-to-rms.aoe2.se
                   </a>
@@ -289,7 +289,7 @@ const ProjectTiles = props => {
                 </p>
               </div>
             </article>
-            <article className="tile is-child notification has-background-grey-lighter">
+            <article className="tile is-child notification has-background-grey-lighter se-dark-neutral-tile">
               <div className="content">
                 <h3 className="title">Your project here...</h3>
                 <p className="subtitle">Submit your project for adoption</p>
@@ -302,7 +302,7 @@ const ProjectTiles = props => {
           </div>
         </div>
         <div className="tile is-parent">
-          <article className="tile is-child notification has-background-info-light">
+          <article className="tile is-child notification has-background-info-light se-dark-neutral-tile se-support-tile">
             {/*<div className="is-pulled-right has-text-centered" style={{ width: 150 }}>*/}
             {/*  <figure className="image is-128x128 m-auto">*/}
             {/*    <DonationProgressBar />*/}

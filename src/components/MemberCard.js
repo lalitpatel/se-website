@@ -12,7 +12,7 @@ const MemberCard = props => {
       <div className="media-content">
         <div className="content pt-1">
           <a href={`https://discordapp.com/users/${props.discordId}`} target="_blank" rel="noreferrer">
-            <span className="title is-size-5">{props.name}</span><span> </span>
+            <span className="se-member-name is-size-5">{props.name}</span><span> </span>
           </a>
           <p className="has-text-grey mt-1">{props.children}</p>
         </div>
