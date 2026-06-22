@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { IoDesktopOutline, IoMoonOutline, IoSunnyOutline } from 'react-icons/io5';
 
 const STORAGE_KEY = 'se-theme';
+const DEFAULT_THEME = 'system';
 const THEME_ORDER = ['system', 'light', 'dark'];
 const THEME_LABELS = {
   system: 'System',
@@ -24,7 +25,7 @@ const applyTheme = theme => {
 };
 
 const ThemeToggle = () => {
-  const [theme, setTheme] = useState('system');
+  const [theme, setTheme] = useState(DEFAULT_THEME);
 
   const setStoredTheme = nextTheme => {
     setTheme(nextTheme);
@@ -33,9 +34,10 @@ const ThemeToggle = () => {
   };
 
   useEffect(() => {
-    const storedTheme = window.localStorage.getItem(STORAGE_KEY) || 'system';
-    setTheme(storedTheme);
-    applyTheme(storedTheme);
+    const storedTheme = window.localStorage.getItem(STORAGE_KEY);
+    const nextTheme = THEME_ORDER.includes(storedTheme) ? storedTheme : DEFAULT_THEME;
+    setTheme(nextTheme);
+    applyTheme(nextTheme);
   }, []);
 
   const onClick = () => {

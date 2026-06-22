@@ -19,10 +19,6 @@ $family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monos
 [data-theme="dark"]
   --se-progress-trail: #1f3a52
 
-@media (prefers-color-scheme: dark)
-  :root:not([data-theme="light"])
-    --se-progress-trail: #1f3a52
-
 @media (prefers-reduced-motion: no-preference)
   html,
   body,
@@ -142,6 +138,9 @@ dl.description
 
 .footer-note
   color: var(--bulma-text-weak)
+
+.footer
+  --bulma-footer-background-color: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), calc(var(--bulma-scheme-main-ter-l) - 1%))
 
 .se-project-tiles
   .notification
@@ -344,10 +343,6 @@ dl.description
 
 [data-theme="dark"]
   +se-project-tile-dark-mode
-
-@media (prefers-color-scheme: dark)
-  :root:not([data-theme="light"])
-    +se-project-tile-dark-mode
 
 .tile
   align-items: stretch
