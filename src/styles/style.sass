@@ -19,6 +19,10 @@ $family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monos
 [data-theme="dark"]
   --se-progress-trail: #1f3a52
 
+@media (prefers-color-scheme: dark)
+  :root:not([data-theme="light"])
+    --se-progress-trail: #1f3a52
+
 @media (prefers-reduced-motion: no-preference)
   html,
   body,
@@ -246,6 +250,9 @@ dl.description
         border-color: #0d4c83
 
   .se-support-tile
+    background-color: #0b2545 !important
+    color: #ffffff
+
     .button.is-info
       background-color: #0f5a9c
       border-color: #0f5a9c
@@ -343,6 +350,10 @@ dl.description
 
 [data-theme="dark"]
   +se-project-tile-dark-mode
+
+@media (prefers-color-scheme: dark)
+  :root:not([data-theme="light"])
+    +se-project-tile-dark-mode
 
 .tile
   align-items: stretch
